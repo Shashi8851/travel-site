@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Horizons - Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-wrapper">
+            <div class="signup-illustration">
+                <div class="illustration-content">
+                    <h2>Join Travel Horizons</h2>
+                    <p>Your passport to unforgettable adventures</p>
+                    <div class="travel-background">
+                        <div class="background-layer layer-1"></div>
+                        <div class="background-layer layer-2"></div>
+                        <div class="background-layer layer-3"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="signup-form-container">
+                <form id="signupForm" class="signup-form" novalidate>
+                    <div class="form-header">
+                        <h1>Create Account</h1>
+                        <p>Start your journey with us</p>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                required 
+                                placeholder="First Name"
+                            >
+                            <span class="input-icon">👤</span>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                required 
+                                placeholder="Last Name"
+                            >
+                            <span class="input-icon">👥</span>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="Email Address"
+                        >
+                        <span class="input-icon">✉️</span>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group password-group">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="Password"
+                        >
+                        <span class="input-icon">🔐</span>
+                        <button type="button" class="toggle-password">👁️</button>
+                        <span class="error-message"></span>
+                        <div class="password-strength">
+                            <div class="strength-indicator"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            required 
+                            placeholder="Confirm Password"
+                        >
+                        <span class="input-icon">✔️</span>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="terms-section">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the 
+                            <a href="#" class="terms-link">Terms & Conditions</a>
+                        </label>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="signup-button">
+                        <span class="button-text"><a href="index.html">sign up</a></span>
+                        <div class="button-loader"></div>
+                    </button>
+
+                    <div class="social-signup">
+                        <p>Or sign up with</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn google">
+                                <img src="./image/google.png" alt="Google">
+                            </button>
+                            <button type="button" class="social-btn facebook">
+                                <img src="./image/facebook.png" alt="Facebook">
+                            </button>
+                            <button type="button" class="social-btn apple">
+                                <img src="./image/apple.png" alt="Apple">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="login-link">
+                        Already have an account? 
+                        <a href="user.html" class="login-text">Log In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <div class="terms-scroll">
+                <p>Welcome to Travel Horizons. By creating an account, you agree to the following terms:</p>
+                <ul>
+                    <li>You will provide accurate and current information</li>
+                    <li>You are responsible for maintaining the confidentiality of your account</li>
+                    <li>You agree to accept responsibility for all activities that occur under your account</li>
+                    <li>You will not use the service for any illegal or unauthorized purpose</li>
+                </ul>
+                <p>These terms may be updated periodically. Please review them regularly.</p>
+            </div>
+            <button class="accept-terms">I Accept</button>
+        </div>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>

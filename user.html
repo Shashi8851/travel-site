@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Horizons - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-wrapper">
+            <div class="login-illustration">
+                <div class="illustration-content">
+                    <h2>Welcome Back, Shashi traveler!</h2>
+                    <p>Discover new horizons and create unforgettable memories.</p>
+                    <div class="travel-images">
+                        <img src="./image/beach.jpeg" alt="Beach" class="travel-image">
+                        <img src="./image/mountain.avif" alt="Mountain" class="travel-image">
+                        <img src="./image/city.jpeg" alt="City" class="travel-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="login-form-container">
+                <form id="loginForm" class="login-form">
+                    <div class="form-header">
+                        <h1>Sign In</h1>
+                        <p>Enter your credentials to explore the world</p>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="Email Address"
+                        >
+                        <span class="input-icon">✉️</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="Password"
+                        >
+                        <span class="input-icon">🔐</span>
+                        <button type="button" class="toggle-password">👁️</button>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        <span class="button-text"><a href="index.html">Login</a></span>
+                        <div class="button-loader"></div>
+                    </button>
+
+                    <div class="social-login">
+                        <p>Or continue with</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn google">
+                                <img src="./image/google.png" alt="Google">
+                            </button>
+                            <button type="button" class="social-btn facebook">
+                                <img src="./image/facebook.png" alt="Facebook">
+                            </button>
+                            <button type="button" class="social-btn apple">
+                                <img src="./image/apple.png" alt="Apple">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signup-link">
+                        Don't have an account? 
+                        <a href="sign-up.html" class="signup-text">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column company-info">
+                <h3 class="column-title">shni tour</h3>
+                <p class="company-description">
+                    A good plus of traveling is that often you get new skills without difficulty and without even noticing it.
+                </p>
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="./image/tours.jpeg" alt="Company Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="column-title">Contacts</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon phone-icon"></span>
+                        <span class="contact-text">123-456-78901</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon location-icon"></span>
+                        <span class="contact-text">India,haryana , faridabad</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon clock-icon"></span>
+                        <span class="contact-text">Mon - Sat 8.00 - 18.00</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="https://x.com/home?lang=en" class="social-icon twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.google.com/" class="social-icon google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.skype.com/en/" class="social-icon skype" target="_blank"><i class="fa-brands fa-skype"></i></a>
+                    <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column recent-trips">
+                <h3 class="column-title">Recent Trips</h3>
+                <div class="trip-gallery" id="trip-gallery">
+                    <!-- Images will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+  <script src="script.js"></script>
+    <script src="login-script.js"></script>
+</body>
+</html>

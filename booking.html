@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('./image/aero.jpeg') no-repeat center center;
+            background-size: cover;
+            animation: zoomEffect 20s infinite alternate;
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .content {
+            position: relative;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-content {
+            color: white;
+            max-width: 400px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .text-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4a90e2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .booking-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 350px;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        .passenger-count {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .passenger-count input {
+            width: 70px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #357abd;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                padding: 1rem;
+                justify-content: center;
+            }
+
+            .text-content {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .booking-form {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .text-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .booking-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="container">
+        <div class="background-image"></div>
+        <div class="content">
+            <div class="text-content">
+                <h1>BOOK YOUR FLIGHT TODAY</h1>
+                <p>this flight is your destination. we are provide good enivronment.</p>
+            </div>
+            
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="boarding">Boarding From</label>
+                    <input type="text" id="boarding" placeholder="Enter city or airport">
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="Enter city or airport">
+                </div>
+                
+                <div class="form-group">
+                    <label for="departure">Departure Date</label>
+                    <input type="date" id="departure">
+                </div>
+                
+                <div class="form-group">
+                    <label for="return">Return Date</label>
+                    <input type="date" id="return">
+                </div>
+                
+                <div class="form-group">
+                    <label>Passengers</label>
+                    <div class="passenger-count">
+                        <input type="number" min="1" value="1" id="adults">
+                        <select id="class">
+                            <option value="economy">Economy Class</option>
+                            <option value="business">Business Class</option>
+                            <option value="first">First Class</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">SHOW FLIGHTS</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column company-info">
+                <h3 class="column-title">Shashi tour</h3>
+                <p class="company-description">
+                    A good plus of traveling is that often you get new skills without difficulty and without even noticing it.
+                </p>
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="./image/tours.jpeg" alt="Company Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="column-title">Contacts</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon phone-icon"></span>
+                        <span class="contact-text">123-456-78901</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon location-icon"></span>
+                        <span class="contact-text">India,haryana , faridabad</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon clock-icon"></span>
+                        <span class="contact-text">Mon - Sat 8.00 - 18.00</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="https://x.com/home?lang=en" class="social-icon twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.google.com/" class="social-icon google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.skype.com/en/" class="social-icon skype" target="_blank"><i class="fa-brands fa-skype"></i></a>
+                    <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column recent-trips">
+                <h3 class="column-title">Recent Trips</h3>
+                <div class="trip-gallery" id="trip-gallery">
+                    <!-- Images will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Add basic form validation
+        document.querySelector('.booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            console.log('Searching for flights...');
+        });
+
+        // Add dynamic date validation
+        const departureDate = document.getElementById('departure');
+        const returnDate = document.getElementById('return');
+        
+        departureDate.addEventListener('change', function() {
+            returnDate.min = this.value;
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        departureDate.min = today;
+        returnDate.min = today;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

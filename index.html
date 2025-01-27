@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Responsive Navbar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- font awsome-cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+            --white: #ffffff;
+
+            /* Typography */
+            --font-family: 'Poppins', sans-serif;
+            --base-font-size: 16px;
+
+            /* Spacing */
+            --spacing-small: 0.5rem;
+            --spacing-medium: 1rem;
+            --spacing-large: 2rem;
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+        }
+
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-medium) var(--spacing-large);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .navbar .logo i {
+            margin-right: var(--spacing-small);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 0 var(--spacing-medium);
+            position: relative;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons a {
+            color: var(--text-color);
+            margin-left: var(--spacing-medium);
+            transition: color var(--transition-speed);
+        }
+
+        .nav-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 3px 0;
+            transition: all var(--transition-speed);
+        }
+
+        /* Slider Styles */
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            height: 600px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide .item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: none;
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .slide .item.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .slide .item .content {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            color: white;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide .item .content .name {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: var(--spacing-small);
+        }
+
+        .slide .item .content .des {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-medium);
+            max-width: 500px;
+        }
+
+        .slide .item .content button {
+            padding: var(--spacing-small) var(--spacing-medium);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .slide .item .content button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: var(--spacing-small);
+        }
+
+        .button button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: var(--spacing-small);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .button button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Travel Cards Styles */
+        .travel-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-medium);
+            padding: var(--spacing-large);
+        }
+
+        .travel-card {
+            width: calc(33.333% - var(--spacing-medium));
+            min-width: 250px;
+            perspective: 1000px;
+        }
+
+        .travel-card-inner {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            transition: transform var(--transition-speed);
+            transform-style: preserve-3d;
+        }
+
+        .travel-card:hover .travel-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .travel-card-front,
+        .travel-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .travel-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .travel-card-back {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: var(--spacing-medium);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1200px) {
+            .travel-card {
+                width: calc(50% - var(--spacing-medium));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: var(--spacing-small);
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(255, 255, 255, 0.95);
+                padding: var(--spacing-medium);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: var(--spacing-small) 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .container {
+                height: 400px;
+            }
+
+            .slide .item .content .name {
+                font-size: 2rem;
+            }
+
+            .slide .item .content .des {
+                font-size: 1rem;
+            }
+
+            .travel-card {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                height: 300px;
+            }
+
+            .slide .item .content .name {
+                font-size: 1.5rem;
+            }
+
+            .slide .item .content .des {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-globe"></i>
+            TravelHub
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <a href="#" title="Search"><i class="fas fa-search"></i></a>
+            <a href="user.html" title="Profile"><i class="fas fa-user"></i></a>
+        </div>
+
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url('./image/swit.jpeg');">
+                <div class="content">
+                    <div class="name">Switzerland</div>
+                    <div class="des">That place such a heritage for new commerce people</div>
+                    <button>see more</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('./image/ind.jpg');">
+                <div class="content">
+                    <div class="name">India</div>
+                    <div class="des">In india there are many place to visit for mens & womens</div>
+                    <button>see more</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('./image/finland.jpeg');">
+                <div class="content">
+                    <div class="name">Finland</div>
+                    <div class="des">Quite good place place for northern culture people</div>
+                    <button>see more</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('./image/england.jpeg');">
+                <div class="content">
+                    <div class="name">England</div>
+                    <div class="des">Such a graceful place for the nordiac people</div>
+                    <button>see more</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('./image/ire.jpg');">
+                <div class="content">
+                    <div class="name">Ierland</div>
+                    <div class="des">In winter there are such beauty</div>
+                    <button>see more</button>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-backward"></i></button>
+            <button class="next"><i class="fa-solid fa-forward"></i></button>
+        </div>
+    </div>
+
+    <!-- cards animated -->
+    <div class="travel-cards-container">
+        <!-- Card 1 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/download.jpeg" alt="Switzerland">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Switzerland</h3>
+                    <p>Explore the breathtaking Alpine landscapes and pristine mountain views.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/japan.jpeg" alt="Japan">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Japan</h3>
+                    <p>Discover the perfect blend of traditional culture and modern technology.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/paris.jpeg" alt="paris">
+                </div>
+                <div class="travel-card-back">
+                    <h3>French</h3>
+                    <p>Experience the rich history, art, and delicious cuisine of paris cities.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/gate.jpeg" alt="india">
+                </div>
+                <div class="travel-card-back">
+                    <h3>India</h3>
+                    <p>Discover stunning landscapes and unique wildlife in this natural paradise.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/iceland.jpeg" alt="Iceland">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Iceland</h3>
+                    <p>Experience the magical northern lights and unique volcanic landscapes.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/canada.jpg" alt="Canada">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Canada</h3>
+                    <p>Explore vast wilderness, stunning national parks, and vibrant cities.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/ireland.jpeg" alt="Brazil">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Brazil</h3>
+                    <p>Experience vibrant culture, rainforests, and beautiful coastal regions.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/australia.jpeg" alt="Australia">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Australia</h3>
+                    <p>Discover unique wildlife, stunning beaches, and vibrant cities.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/palace.jpeg" alt="Greece">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Greece</h3>
+                    <p>Explore ancient history, beautiful islands, and Mediterranean culture.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/moraco.jpg" alt="Morocco">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Morocco</h3>
+                    <p>Experience exotic markets, desert landscapes, and rich cultural heritage.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/thailand.jpeg" alt="Thailand">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Thailand</h3>
+                    <p>Discover beautiful beaches, temples, and vibrant street life.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="travel-card">
+            <div class="travel-card-inner">
+                <div class="travel-card-front">
+                    <img src="./image/junggle.jpeg" alt="Peru">
+                </div>
+                <div class="travel-card-back">
+                    <h3>Peru</h3>
+                    <p>Explore ancient Incan ruins, diverse landscapes, and rich cultural heritage.</p>
+                    <a href="#" class="btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- add qr code -->
+    <div class="bex-homepage-module">
+        <div class="customer-notification-container">
+            <div class="promo-image">
+                <img src="https://a.travel-assets.com/mad-service/footer/bnaBanners/BEX_Footer.jpg"
+                    alt="Expedia App Promo">
+            </div>
+            <div class="promo-content">
+                <h2 class="promo-title">Go further with the Shashi app</h2>
+                <p class="promo-description">
+                    "The world is a book, and those who do not travel read only one page." – Shashi kumar sharma
+                </p>
+                <div class="promo-qr-section">
+                    <div class="qr-code" id="qr-code-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.expedia.com/app"
+                            alt="Expedia App QR Code">
+                    </div>
+                    <div>
+                        <p class="download-text">Scan the QR code with your device camera and download our app</p>
+                        <div class="app-badges">
+                            <div class="app-badge app-store-badge" onclick="openAppStore('apple')"></div>
+                            <div class="app-badge google-play-badge" onclick="openAppStore('google')"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- footer site -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column company-info">
+                <h3 class="column-title">Shashi tour</h3>
+                <p class="company-description">
+                    A good plus of traveling is that often you get new skills without difficulty and without even noticing it.
+                </p>
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="./image/tours.jpeg" alt="Company Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="column-title">Contacts</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon phone-icon"></span>
+                        <span class="contact-text">123-456-78901</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon location-icon"></span>
+                        <span class="contact-text">India,haryana , faridabad</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon clock-icon"></span>
+                        <span class="contact-text">Mon - Sat 8.00 - 18.00</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="https://x.com/home?lang=en" class="social-icon twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.google.com/" class="social-icon google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.skype.com/en/" class="social-icon skype" target="_blank"><i class="fa-brands fa-skype"></i></a>
+                    <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column recent-trips">
+                <h3 class="column-title">Recent Trips</h3>
+                <div class="trip-gallery" id="trip-gallery">
+                    <!-- Images will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>

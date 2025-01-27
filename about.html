@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Wanderlust Travel</title>
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom Properties */
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e9c46a;
+            --text-color: #264653;
+            --light-bg: #f8f9fa;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('./image/beach.jpeg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-card.visible {
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .team-member {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .team-member.visible {
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+        }
+
+        .stat-item.visible {
+            animation: fadeIn 1s forwards;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-section,
+            .team-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Journey</h1>
+            <p>Take only memories, leave footprints</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-card">
+            <h3>Our Mission</h3>
+            <p>We strive to create extraordinary travel experiences that inspire, educate, and connect people across cultures and continents.</p>
+        </div>
+        <div class="about-card">
+            <h3>Our Vision</h3>
+            <p>To be the world's most trusted travel companion, making authentic travel experiences accessible to everyone.</p>
+        </div>
+        <div class="about-card">
+            <h3>Our Values</h3>
+            <p>Sustainability, authenticity, and cultural respect guide everything we do as we help travelers explore the world responsibly.</p>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="./image/126734.jpg" alt="Team Member">
+                <h3>Shashi kumar sharma</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="./image/126408.jpg" alt="Team Member">
+                <h3>Govind yadav</h3>
+                <p>Travel Director</p>
+            </div>
+            <div class="team-member">
+                <img src="./image/124743.jpg" alt="Team Member">
+                <h3>tuchi gang</h3>
+                <p>Customer Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">1+</div>
+                <div>Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div>Happy Travelers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div>Destinations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3.5/5</div>
+                <div>Customer Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column company-info">
+                <h3 class="column-title">shni tour</h3>
+                <p class="company-description">
+                    A good plus of traveling is that often you get new skills without difficulty and without even noticing it.
+                </p>
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="./image/tours.jpeg" alt="Company Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="column-title">Contacts</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon phone-icon"></span>
+                        <span class="contact-text">123-456-78901</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon location-icon"></span>
+                        <span class="contact-text">India,haryana , faridabad</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon clock-icon"></span>
+                        <span class="contact-text">Mon - Sat 8.00 - 18.00</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="https://x.com/home?lang=en" class="social-icon twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.google.com/" class="social-icon google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.skype.com/en/" class="social-icon skype" target="_blank"><i class="fa-brands fa-skype"></i></a>
+                    <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column recent-trips">
+                <h3 class="column-title">Recent Trips</h3>
+                <div class="trip-gallery" id="trip-gallery">
+                    <!-- Images will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all animated elements
+        document.querySelectorAll('.about-card, .team-member, .stat-item').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
